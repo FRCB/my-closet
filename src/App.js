@@ -1,5 +1,5 @@
 import React, {Component} from "react"
-import Item from "./Item"
+// import child component here
 
 import "./App.css"
 
@@ -13,14 +13,27 @@ class App extends Component {
     }
   }
 
+  handleChange(e) {
+    // update the value of input stored on the state object
+  }
+
+  chooseColor(e) {
+    // update the value of colorInput stored on the state object
+  }
+
+  addItem() {
+    // update the value of inventory stored on the state object
+  }
+
+  deleteItem(item) {
+    // update the value of inventory stored on the state object to not include the passed in item
+  }
+
   render(){
 
     let items = this.state.inventory.map((clothing, index) => {
       return (
-        <Item type={clothing.type}
-              color={clothing.color}
-        />
-
+        <div></div> //change to child component passing props
       )
     })
 

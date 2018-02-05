@@ -3,8 +3,8 @@ import React from "react";
 function Item(props) {
   return (
     <li>
-      {props.type}{" "}
-      <span style={{ backgroundColor: props.color }} className="item-color" />
+      {/*grab type off the props object*/}{" "}
+      <span style={{ /*grab color off the props object and set to backgroundColor*/ }} className="item-color" />
     </li>
   );
 }
