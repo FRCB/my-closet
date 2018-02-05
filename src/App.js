@@ -8,7 +8,7 @@ class App extends Component {
     super()
     this.state = {
       input: "",
-      colorInput: "",
+      colorInput: "#ffffff",
       inventory: [{type: "Shirt", color: "blue"}, {type: "pants", color: "brown"}]
     }
   }
