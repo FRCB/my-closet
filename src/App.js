@@ -1,5 +1,5 @@
 import React, {Component} from "react"
-// import child component here
+import Item from "./Item"
 
 import "./App.css"
 
@@ -11,18 +11,22 @@ class App extends Component {
       colorInput: "",
       inventory: [{type: "Shirt", color: "blue"}, {type: "pants", color: "brown"}]
     }
+    this.handleChange = this.handleChange.bind(this);
+    this.chooseColor = this.chooseColor.bind(this);
+    this.addItem = this.addItem.bind(this);
   }
 
   handleChange(e) {
-    // update the value of input stored on the state object
+    this.setState({input: e.target.value})
   }
 
   chooseColor(e) {
-    // update the value of colorInput stored on the state object
+    this.setState({colorInput: e.target.value})
   }
 
   addItem() {
-    // update the value of inventory stored on the state object
+    this.setState({inventory: [...this.state.inventory, {type: this.state.input, color: this.state.colorInput}]})
+
   }
 
   deleteItem(item) {
@@ -33,7 +37,7 @@ class App extends Component {
 
     let items = this.state.inventory.map((clothing, index) => {
       return (
-        <div></div> //change to child component passing props
+        <Item type={clothing.type} color={clothing.color} />
       )
     })
 
@@ -41,14 +45,14 @@ class App extends Component {
     return (
       <div>
         <h2>Add Item:</h2>
-        <input placeholder="item name" value={this.state.input} />
-        <input type="color" value= {this.state.colorInput} />
-        <button>Add</button>
+        <input placeholder="item name" value={this.state.input} onChange={this.handleChange} />
+        <input type="color" value= {this.state.colorInput} onChange={this.chooseColor}/>
+        <button onClick={this.addItem}>Add</button>
 
         <h2>Inventory</h2>
-        <ul>
+        <div>
         {items}
-        </ul>
+        </div>
 
 
       </div>

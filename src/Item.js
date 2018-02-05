@@ -2,10 +2,11 @@ import React from "react";
 
 function Item(props) {
   return (
-    <li>
-      {/*grab type off the props object*/}{" "}
-      <span style={{ /*grab color off the props object and set to backgroundColor*/ }} className="item-color" />
-    </li>
+    <div className="item">
+      {props.type}{" "}
+      <div style={{ backgroundColor: props.color }} className="item-color" />
+      <button className="delete">X</button>
+    </div>
   );
 }
 
