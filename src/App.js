@@ -46,9 +46,9 @@ class App extends Component {
         <button>Add</button>
 
         <h2>Inventory</h2>
-        <ul>
+        <div>
         {items}
-        </ul>
+        </div>
 
 
       </div>
