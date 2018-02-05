@@ -5,7 +5,7 @@ function Item(props) {
     <div className="item">
       {props.type}{" "}
       <div style={{ backgroundColor: props.color }} className="item-color" />
-      <button className="delete">X</button>
+      <button className="delete" onClick={() => props.delete(props.id)}>X</button>
     </div>
   );
 }

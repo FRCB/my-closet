@@ -8,12 +8,13 @@ class App extends Component {
     super()
     this.state = {
       input: "",
-      colorInput: "",
+      colorInput: "#ffffff",
       inventory: [{type: "Shirt", color: "blue"}, {type: "pants", color: "brown"}]
     }
     this.handleChange = this.handleChange.bind(this);
     this.chooseColor = this.chooseColor.bind(this);
     this.addItem = this.addItem.bind(this);
+    this.deleteItem = this.deleteItem.bind(this);
   }
 
   handleChange(e) {
@@ -25,19 +26,23 @@ class App extends Component {
   }
 
   addItem() {
-    this.setState({inventory: [...this.state.inventory, {type: this.state.input, color: this.state.colorInput}]})
+    this.setState({inventory: [...this.state.inventory, {type: this.state.input, color: this.state.colorInput}],
+    input:"", colorInput:"#ffffff"})
 
   }
 
-  deleteItem(item) {
-    // update the value of inventory stored on the state object to not include the passed in item
+  deleteItem(index) {
+    var copy = this.state.inventory.slice();
+    copy.splice(index, 1)
+    this.setState({inventory: copy})
+
   }
 
   render(){
 
     let items = this.state.inventory.map((clothing, index) => {
       return (
-        <Item type={clothing.type} color={clothing.color} />
+        <Item type={clothing.type} color={clothing.color} delete={this.deleteItem} id={index}/>
       )
     })
 
